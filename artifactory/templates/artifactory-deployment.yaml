@@ -66,6 +66,22 @@ spec:
           value: {{ .Values.artifactory.newInitPassword | quote }}
         - name: LICENSE_KEY 
           value: {{ .Values.artifactory.licenses | quote }}
+        - name: DEFAULT_REPOSITORY_KEY 
+          value: {{ .Values.artifactory.repositoryKey | quote }}
+        - name: DEFAULT_REPOSITORY_CLASS 
+          value: {{ .Values.artifactory.repositoryClass | quote }}
+        - name: DEFAULT_REPOSITORY_TYPE
+          value: {{ .Values.artifactory.repositoryType | quote }}
+        - name: DEFAULT_REPOSITORY_LAYOUT
+          value: {{ .Values.artifactory.repositoryLayout | quote }}
+        - name: DOCKER_REVERSE_PROXY_METHOD 
+          value: {{ .Values.artifactory.dockerReverseProxyMethod | quote }}
+        - name: NODE_IP 
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        - name: NODE_PORT
+          value: {{ .Values.artifactory.service.nodePort | quote }}
         - name: EXTRA_JAVA_OPTIONS
           value: "
       {{- if .Values.artifactory.javaOpts.other }}

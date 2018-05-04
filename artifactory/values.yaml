@@ -30,6 +30,11 @@ artifactory:
   replicaCount: 1
   newInitPassword: rancher
   licenses: ""
+  repositoryKey: docker-local
+  repositoryClass: local
+  repositoryType: docker
+  repositoryLayout: simple-default
+  dockerReverseProxyMethod: REPOPATHPREFIX
   image:
     # repository: "docker.bintray.io/jfrog/artifactory-oss"
     repository: "docker.bintray.io/jfrog/artifactory-pro"
