@@ -18,6 +18,9 @@ spec:
   - port: {{ .Values.artifactory.externalPort }}
     targetPort: {{ .Values.artifactory.internalPort }}
     protocol: TCP
+    {{- if and .Values.artifactory.service.nodePort (ne .Values.artifactory.service.type "ClusterIP") }}
+    nodePort: {{ .Values.artifactory.service.nodePort }}
+    {{- end }}
     name: {{ .Release.Name }}
   selector:
     app: {{ template "artifactory.name" . }}

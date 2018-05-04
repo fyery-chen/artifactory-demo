@@ -38,6 +38,7 @@ artifactory:
   service:
     name: artifactory
     type: ClusterIP
+    nodePort: 32356
     annotations: {}
   externalPort: 8081
   internalPort: 8081
