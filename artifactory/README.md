@@ -98,6 +98,11 @@ The following table lists the configurable parameters of the artifactory chart a
 | `imagePullSecrets`        | Docker registry pull secret       |                                                          |
 | `artifactory.name` | Artifactory name | `artifactory`   |
 | `artifactory.replicaCount`            | Replica count for Artifactory deployment| `1`                                                |
+| `artifactory.repositoryKey`            | The key of repository| `docker-local`                                                |
+| `artifactory.repositoryClass`            | The class of repository| `local`                                                |
+| `artifactory.repositoryType`            | The package type of repository| `docker`                                                |
+| `artifactory.repositoryLayout`           | The layout of repository| `simple-default`                                                |
+| `artifactory.dockerReverseProxyMethod`   | The method of docker reverse proxy| `REPOPATHPREFIX`                                                |
 | `artifactory.image.pullPolicy`         | Container pull policy             | `IfNotPresent`                                           |
 | `artifactory.image.repository`    | Container image                   | `docker.bintray.io/jfrog/artifactory-pro`                |
 | `artifactory.image.version`       | Container tag                     |  `5.10.1`                                         |
