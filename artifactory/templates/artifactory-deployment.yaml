@@ -60,6 +60,11 @@ spec:
             secretKeyRef:
               name: {{ .Release.Name }}-postgresql
               key: postgres-password
+        - name: CCE_TEST 
+          valueFrom:
+            secretKeyRef:
+              name: cce-test 
+              key: a 
         - name: DB_HOST
           value: {{ .Release.Name }}-postgresql
         - name: NEW_INIT_PASSWORD
