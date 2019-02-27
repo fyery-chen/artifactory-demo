@@ -4,8 +4,8 @@ metadata:
   name: {{ template "artifactory.fullname" . }}
   labels:
     app: {{ template "artifactory.name" . }}
-    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
-    component: "{{ .Values.artifactory.name }}"
+    chart: {{ template "artifactory.chart" . }}
+    component: {{ .Values.artifactory.name }}
     heritage: {{ .Release.Service }}
     release: {{ .Release.Name }}
 {{- if .Values.artifactory.service.annotations }}
@@ -18,10 +18,13 @@ spec:
   - port: {{ .Values.artifactory.externalPort }}
     targetPort: {{ .Values.artifactory.internalPort }}
     protocol: TCP
-    {{- if and .Values.artifactory.service.nodePort (ne .Values.artifactory.service.type "ClusterIP") }}
-    nodePort: {{ .Values.artifactory.service.nodePort }}
-    {{- end }}
     name: {{ .Release.Name }}
+  {{- if .Values.artifactory.replicator.enabled }}
+  - port: {{ .Values.artifactory.externalPortReplicator }}
+    targetPort: {{ .Values.artifactory.internalPortReplicator }}
+    protocol: TCP
+    name: replicator
+  {{- end}}
   selector:
     app: {{ template "artifactory.name" . }}
     component: "{{ .Values.artifactory.name }}"
